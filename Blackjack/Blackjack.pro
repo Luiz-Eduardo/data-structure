@@ -2,15 +2,14 @@ TEMPLATE = app
 CONFIG += console
 CONFIG -= app_bundle
 CONFIG -= qt
-CONFIG += c++11
 
 SOURCES += main.cpp \
-    card.cpp \
+    blackjack.cpp \
     deck.cpp \
-    blackjack.cpp
+    card.cpp
 
 HEADERS += \
-    card.h \
+    blackjack.h \
     deck.h \
-    blackjack.h
+    card.h
 

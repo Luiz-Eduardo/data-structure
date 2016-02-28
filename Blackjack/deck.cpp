@@ -1,5 +1,6 @@
 #include "deck.h"
 #include <iostream>
+#include <cmath>
 #include <cstdlib>
 #include <ctime>
 
@@ -43,13 +44,28 @@ Card Deck::draw(){
 }
 
 int Deck::cut(int n){
-    int p = 26, x = 0;
+    double sum = 0;
 
-    for(int i = 0; i < n; i++)
-        if(rand()%52 < p)
-            x++;
+    for(int i = 0; i < 52; i++){
+        double num = 1, denom = 1, mult;
 
-    return x;
+        for(int j = 0; j <= i; j++){
+            num *= (52-j);
+            denom *= (j+1);
+            mult = num/denom;
+        }
+
+        mult *= 100/pow(2, 52);
+
+        double f = (double)rand() / RAND_MAX;
+        double fMin = 0, fMax = 12; //Maior probabilidade = 11.0116
+        f = fMin + f * (fMax - fMin);
+
+        if(mult >= f)
+            sum++;
+    }
+
+    return sum;
 }
 
 list<Card> Deck::split(list<Card>& l, int c){

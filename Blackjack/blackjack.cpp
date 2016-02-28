@@ -93,7 +93,7 @@ list <Card> Blackjack::computerPlayer(Deck d, int humanScore){
         d.cl.pop_front();
         computerScore = getScore(computerCards);
         cout << computerScore << endl;
-    } while(computerScore <= humanScore);
+    } while((computerScore <= humanScore) || (computerScore == 21 && humanScore == 21));
 
     return computerCards;
 }
