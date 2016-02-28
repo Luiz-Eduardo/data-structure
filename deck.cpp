@@ -43,7 +43,13 @@ Card Deck::draw(){
 }
 
 int Deck::cut(int n){
-    return n;
+    int p = 26, x = 0;
+
+    for(int i = 0; i < n; i++)
+        if(rand()%52 < p)
+            x++;
+
+    return x;
 }
 
 list<Card> Deck::split(list<Card>& l, int c){

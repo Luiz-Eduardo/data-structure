@@ -102,17 +102,12 @@ void test5(){
 }
 
 void test6(){
-    int x = 7;
-
     Deck d;
-    while(x--)
-        cout << d.cut(52);
-    /*
 
     cout << d.toString() << endl;
     d.riffleShuffle(7);
     cout << endl;
-    cout << toString(d.cl) << endl; */
+    cout << toString(d.cl) << endl;
 }
 
 void test7(){
