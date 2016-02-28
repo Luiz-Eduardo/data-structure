@@ -1,14 +1,15 @@
 #ifndef CARD_H
 #define CARD_H
 
+#include <list>
 #include <string>
 
 using namespace std;
 
 class Card{
-    char naipe;
-    int valor;
 public:
+    int valor;
+    char naipe;
     Card(int naipe, int valor);
     string toString();
 };

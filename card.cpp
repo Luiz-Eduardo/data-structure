@@ -33,5 +33,3 @@ string Card::toString(){
 
     return carta;
 }
-
-
