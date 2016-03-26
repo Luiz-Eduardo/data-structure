@@ -16,6 +16,7 @@ int Blackjack::getPoints(Card c){
             break;
         default:
             return c.valor;
+            break;
     }
 }
 
@@ -76,8 +77,7 @@ list <Card> Blackjack::computerPlayer(Deck d, int humanScore){
     int computerScore = 0, cards = 0;
 
     do{
-
-        if(humanScore > 21)
+        if(humanScore > 21 || (humanScore == 21 && computerScore == 21))
             break;
 
         computerCards.push_back(d.cl.front());
@@ -93,7 +93,7 @@ list <Card> Blackjack::computerPlayer(Deck d, int humanScore){
         d.cl.pop_front();
         computerScore = getScore(computerCards);
         cout << computerScore << endl;
-    } while((computerScore <= humanScore) || (computerScore == 21 && humanScore == 21));
+    } while((computerScore <= humanScore));
 
     return computerCards;
 }

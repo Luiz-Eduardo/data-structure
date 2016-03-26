@@ -44,28 +44,24 @@ Card Deck::draw(){
 }
 
 int Deck::cut(int n){
-    double sum = 0;
+    double sum =  0;
+    double f = (double)rand() / RAND_MAX ;
 
-    for(int i = 0; i < 52; i++){
+    for(int i = 0; i < n; i++){
         double num = 1, denom = 1, mult;
 
         for(int j = 0; j <= i; j++){
-            num *= (52-j);
+            num *= (n-j);
             denom *= (j+1);
             mult = num/denom;
         }
 
-        mult *= 100/pow(2, 52);
-
-        double f = (double)rand() / RAND_MAX;
-        double fMin = 0, fMax = 12; //Maior probabilidade = 11.0116
-        f = fMin + f * (fMax - fMin);
-
-        if(mult >= f)
-            sum++;
+        mult /= pow(2, n);
+        sum += mult;
+        if(sum >= f){
+            return i;
+        }
     }
-
-    return sum;
 }
 
 list<Card> Deck::split(list<Card>& l, int c){
@@ -87,7 +83,7 @@ list<Card> Deck::riffle(list<Card> l1, list<Card> l2){
     double a, b, c, d;
 
     for(int i = 0; i < 52; i++){
-        a = l1.size(), b = l2.size(), c = a/(a+b), d = b/(a+b);
+        a = l1.size(), b = l2.size(), c = a/(a+b), d = ((double) rand()/(RAND_MAX));
 
         if(c > d)
             x = l1.front(), l1.pop_front();
